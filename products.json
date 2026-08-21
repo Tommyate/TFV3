@@ -1,15 +1,5 @@
 [
   {
-    "id": "2",
-    "title": "Magnetic cable organizer set",
-    "description": "Clears desk chaos in under two minutes. Holds surprisingly well.",
-    "price": "$8.49",
-    "image": "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=800&q=80",
-    "link": "https://www.temu.com/",
-    "category": "Tech",
-    "featured": false
-  },
-  {
     "id": "3",
     "title": "Dimmable LED clip light",
     "description": "Warm light, three brightness levels, clips onto almost any desk edge.",
