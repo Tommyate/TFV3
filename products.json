@@ -1,15 +1,5 @@
 [
   {
-    "id": "1",
-    "title": "Mini turbo wash ball",
-    "description": "Lifts stains without a full detergent load — perfect for travel.",
-    "price": "$6.99",
-    "image": "https://images.unsplash.com/photo-1517705008128-361805f42e86?auto=format&fit=crop&w=800&q=80",
-    "link": "https://www.temu.com/",
-    "category": "Home",
-    "featured": true
-  },
-  {
     "id": "2",
     "title": "Magnetic cable organizer set",
     "description": "Clears desk chaos in under two minutes. Holds surprisingly well.",
