@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — Manage Finds</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOCK SCREEN ============ -->
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-card">
+    <h1>Admin access</h1>
+    <p>
+      Saving requires a <strong>GitHub Personal Access Token</strong> with write
+      access to this repository. The token never leaves your browser toward any
+      third party — it's sent only, directly, to <code>api.github.com</code> to
+      update <code>products.json</code>.
+    </p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="owner">GitHub username / organization</label>
+        <input id="owner" type="text" placeholder="e.g. your-username" required autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="repo">Repository name</label>
+        <input id="repo" type="text" placeholder="e.g. my-finds" required autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="branch">Branch</label>
+        <input id="branch" type="text" placeholder="main" value="main" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="token">Personal Access Token (fine-grained)</label>
+        <input id="token" type="password" placeholder="github_pat_…" required autocomplete="off">
+      </div>
+
+      <label class="checkbox-row">
+        <input type="checkbox" id="remember">
+        Remember on this device (stored unencrypted in local storage — only enable on trusted devices)
+      </label>
+
+      <button class="btn" type="submit" id="unlockBtn">Unlock</button>
+      <div id="lockError"></div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ ADMIN AREA ============ -->
+<div class="admin-shell" id="adminShell" style="display:none">
+
+  <div class="admin-header">
+    <h1>Manage finds</h1>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <span class="status-pill ok" id="connStatus">connected</span>
+      <button class="btn secondary small" id="logoutBtn">Log out</button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h2 id="formTitle">Add a new find</h2>
+    <p class="hint">Changes are written as a commit to the repository only when you click "Save &amp; publish".</p>
+
+    <form id="productForm">
+      <input type="hidden" id="editId">
+      <div class="field">
+        <label for="title">Title</label>
+        <input id="title" type="text" required>
+      </div>
+      <div class="field">
+        <label for="description">Short description</label>
+        <textarea id="description" placeholder="What makes this find worth it?"></textarea>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="price">Price</label>
+          <input id="price" type="text" placeholder="$9.99">
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input id="category" type="text" placeholder="e.g. Home">
+        </div>
+      </div>
+      <div class="field">
+        <label for="image">Image URL</label>
+        <input id="image" type="url" placeholder="https://…">
+      </div>
+      <div class="field">
+        <label for="link">Product / affiliate link</label>
+        <input id="link" type="url" required placeholder="https://www.temu.com/…">
+      </div>
+      <label class="checkbox-row">
+        <input type="checkbox" id="featured">
+        Pin as "Featured" at the top
+      </label>
+
+      <div style="display:flex; gap:10px;">
+        <button class="btn" type="submit" id="saveBtn">Save &amp; publish</button>
+        <button class="btn secondary" type="button" id="cancelEdit" style="display:none">Cancel edit</button>
+      </div>
+      <div id="formNotice"></div>
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>Existing finds (<span id="countBadge">0</span>)</h2>
+    <div class="admin-list" id="adminList"></div>
+  </div>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
